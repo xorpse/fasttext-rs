@@ -400,6 +400,13 @@ impl FastText {
         Ok(())
     }
 
+    pub fn load_model_bytes(&mut self, bytes: &[u8]) -> Result<(), String> {
+        unsafe {
+            ffi_try!(cft_fasttext_load_model_bytes(self.inner, bytes.as_ptr(), bytes.len()));
+        }
+        Ok(())
+    }
+
     pub fn save_model(&mut self, filename: &str) -> Result<(), String> {
         let c_path = CString::new(filename).map_err(|e| format!("{:?}", e))?;
         unsafe {

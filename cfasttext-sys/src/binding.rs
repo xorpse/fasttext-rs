@@ -127,6 +127,12 @@ extern "C" {
         filename: *const ::std::os::raw::c_char,
         errptr: *mut *mut ::std::os::raw::c_char,
     );
+    pub fn cft_fasttext_load_model_bytes(
+        handle: *mut fasttext_t,
+        bytes: *const ::std::os::raw::c_uchar,
+        nbytes: usize,
+        errptr: *mut *mut ::std::os::raw::c_char,
+    );
     pub fn cft_fasttext_save_model(
         handle: *mut fasttext_t,
         filename: *const ::std::os::raw::c_char,
